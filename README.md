@@ -1,0 +1,2 @@
+# http-flink
+实现了http协议的一个基于flink的框架，方便其他系统在不使用消息队列的情况下调用flink程序
