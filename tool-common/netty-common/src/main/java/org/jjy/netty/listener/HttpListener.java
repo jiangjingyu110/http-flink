@@ -13,23 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jjy.netty.dto;
+package org.jjy.netty.listener;
 
 /**
- * 带状态的dto
+ * http监听器
  *
  * @author 姜静宇 2023年2月12日
  */
-public interface StatefulDto {
+public interface HttpListener extends HttpRequestListener {
     /**
-     * 许可码在请求头信息中的key
+     * 添加相应监听器
+     *
+     * @param key      监听器的key，一般使用连接id
+     * @param listener 响应监听器
      */
-    String LICENSE_KEY = "token";
+    void putHttpResponseListener(String key, HttpResponseListener<?> listener);
 
     /**
-     * 获取许可
+     * 通过关键字获取相应监听器
      *
-     * @return 许可
+     * @param key 监听器的key，一般使用连接id
+     * @return 响应监听器
      */
-    String getLicense();
+    HttpResponseListener<?> getHttpResponseListener(String key);
+
+    /**
+     * 移除相应监听器
+     *
+     * @param key 监听器的key，一般使用连接id
+     */
+    void removeHttpResponseListener(String key);
 }

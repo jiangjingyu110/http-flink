@@ -13,23 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jjy.netty.dto;
+package org.jjy.netty.listener;
+
+import org.apache.flink.shaded.netty4.io.netty.handler.codec.http.FullHttpRequest;
 
 /**
- * 带状态的dto
+ * http请求监听器
  *
  * @author 姜静宇 2023年2月12日
  */
-public interface StatefulDto {
+public interface HttpRequestListener {
     /**
-     * 许可码在请求头信息中的key
-     */
-    String LICENSE_KEY = "token";
-
-    /**
-     * 获取许可
+     * 数据到来时触发
      *
-     * @return 许可
+     * @param request   请求对象
+     * @param connectId 当前连接的唯一标识
+     * @param timestamp 请求过来时的时间戳
      */
-    String getLicense();
+    void action(FullHttpRequest request, String connectId, long timestamp);
 }

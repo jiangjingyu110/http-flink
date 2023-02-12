@@ -13,23 +13,46 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jjy.netty.dto;
+package org.jjy.netty.listener;
+
+import org.apache.flink.shaded.netty4.io.netty.channel.ChannelHandlerContext;
 
 /**
- * 带状态的dto
+ * 相应监听器
  *
+ * @param <T> 写入的数据类型
  * @author 姜静宇 2023年2月12日
  */
-public interface StatefulDto {
+public interface HttpResponseListener<T> {
     /**
-     * 许可码在请求头信息中的key
+     * 写入数据事件
+     *
+     * @param data 数据
      */
-    String LICENSE_KEY = "token";
+    void write(T data);
 
     /**
-     * 获取许可
-     *
-     * @return 许可
+     * 关闭连接
      */
-    String getLicense();
+    void close();
+
+    /**
+     * 写入数据并关闭连接
+     *
+     * @param data 数据
+     */
+    default void writeAndClose(T data) {
+        write(data);
+        close();
+    }
+
+    /**
+     * 获取netty中写入消息的对象
+     */
+    ChannelHandlerContext getCtx();
+
+    /**
+     * 结果缓存对象
+     */
+    StringBuilder getBuffer();
 }
