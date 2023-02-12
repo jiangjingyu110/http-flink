@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>http-flink</artifactId>
+        <groupId>org.jjy</groupId>
+        <version>0.0.1</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>tool-common</artifactId>
+    <name>工具的公共依赖</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <!-- 核心公共依赖 -->
+        <module>core-common</module>
+        <!-- excel公共依赖 -->
+        <!--<module>excel-common</module>-->
+        <!-- 日志公共依赖 -->
+        <!--<module>log-common</module>-->
+        <!-- mongo公共依赖 -->
+        <!--<module>mongo-common</module>-->
+        <!-- mysql公共依赖 -->
+        <!--<module>mysql-common</module>-->
+        <!-- netty公共依赖 -->
+        <!--<module>netty-common</module>-->
+        <!-- rabbitmq公共依赖 -->
+        <!--<module>rabbitmq-common</module>-->
+        <!-- redis公共依赖 -->
+        <!--<module>redis-common</module>-->
+        <!-- rocksDB公共依赖 -->
+        <!--<module>rocksDB-common</module>-->
+    </modules>
+</project>

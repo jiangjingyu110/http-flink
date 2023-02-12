@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.jjy</groupId>
+    <artifactId>http-flink</artifactId>
+    <version>0.0.1</version>
+    <name>http-flink</name>
+    <description>实现了http协议的一个基于flink框架</description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+
+    </dependencies>
+    <modules>
+        <!-- 公共依赖 -->
+        <module>tool-common</module>
+    </modules>
+</project>
