@@ -12,17 +12,68 @@
     <packaging>pom</packaging>
 
     <properties>
+        <http-flink.group>org.jjy</http-flink.group>
+        <http-flink.version>0.0.1</http-flink.version>
+        <!-- jdk相关 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>8</java.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <!-- flink版本 -->
+        <flink.version>1.14.3</flink.version>
+        <lombok.version>1.18.22</lombok.version>
+        <slf4j-simple.version>1.7.35</slf4j-simple.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-
+            <!-- 子模块版本 -->
+            <dependency>
+                <groupId>${http-flink.group}</groupId>
+                <artifactId>tool-common</artifactId>
+                <version>${http-flink.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${http-flink.group}</groupId>
+                <artifactId>core-common</artifactId>
+                <version>${http-flink.version}</version>
+            </dependency>
+            <!-- flink -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-java</artifactId>
+                <version>${flink.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-streaming-java_2.11</artifactId>
+                <version>${flink.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-clients_2.11</artifactId>
+                <version>${flink.version}</version>
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
-
+        <!-- lombok 现在基本上都会要这个依赖 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j-simple.version}</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <modules>
         <!-- 公共依赖 -->
