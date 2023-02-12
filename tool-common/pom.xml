@@ -26,7 +26,7 @@
         <!-- mysql公共依赖 -->
         <!--<module>mysql-common</module>-->
         <!-- netty公共依赖 -->
-        <!--<module>netty-common</module>-->
+        <module>netty-common</module>
         <!-- rabbitmq公共依赖 -->
         <!--<module>rabbitmq-common</module>-->
         <!-- redis公共依赖 -->

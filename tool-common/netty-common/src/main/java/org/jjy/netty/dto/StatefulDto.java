@@ -13,26 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jjy.core.flink.dto;
+package org.jjy.netty.dto;
 
 /**
- * 为dto添加一些用于flink的方法
- * 一般用于优化
+ * 待状态的dto
  *
  * @author 姜静宇 2023年2月12日
  */
-public interface FlinkDto {
+public interface StatefulDto {
     /**
-     * 设置用于keyBy的值，用于解决数据倾斜问题
-     *
-     * @param keyByValue keyBy的值
+     * 许可码在请求头信息中的key
      */
-    void setKeyByValue(String keyByValue);
+    String LICENSE_KEY = "token";
 
     /**
-     * 获取keyBy的值，用于解决数据倾斜问题
+     * 获取许可
      *
-     * @return keyBy的值
+     * @return 许可
      */
-    String getKeyByValue();
+    String getLicense();
 }
