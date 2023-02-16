@@ -31,12 +31,22 @@
             <!-- 子模块版本 -->
             <dependency>
                 <groupId>${http-flink.group}</groupId>
+                <artifactId>example</artifactId>
+                <version>${http-flink.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${http-flink.group}</groupId>
                 <artifactId>tool-common</artifactId>
                 <version>${http-flink.version}</version>
             </dependency>
             <dependency>
                 <groupId>${http-flink.group}</groupId>
                 <artifactId>core-common</artifactId>
+                <version>${http-flink.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${http-flink.group}</groupId>
+                <artifactId>netty-common</artifactId>
                 <version>${http-flink.version}</version>
             </dependency>
             <!-- flink -->
@@ -76,6 +86,8 @@
         </dependency>
     </dependencies>
     <modules>
+        <!-- 使用案例 -->
+        <module>example</module>
         <!-- 公共依赖 -->
         <module>tool-common</module>
     </modules>

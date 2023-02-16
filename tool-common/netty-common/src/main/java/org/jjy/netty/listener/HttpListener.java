@@ -22,7 +22,7 @@ package org.jjy.netty.listener;
  */
 public interface HttpListener extends HttpRequestListener {
     /**
-     * 添加相应监听器
+     * 添加响应监听器
      *
      * @param key      监听器的key，一般使用连接id
      * @param listener 响应监听器

@@ -34,7 +34,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -62,10 +61,6 @@ public class HttpHandler implements HttpListener, Serializable {
      */
     private SourceFunction.SourceContext<HttpDto<String>> ctx;
     /**
-     * flink数据集
-     */
-    private LinkedBlockingQueue<HttpDto<String>> queue;
-    /**
      * 响应监听器
      */
     private Map<String, HttpResponseListener<?>> listenerMap;
@@ -74,7 +69,7 @@ public class HttpHandler implements HttpListener, Serializable {
      */
     private int port;
     /**
-     * 是否开启水位线
+     * 水位线间隔时长，为0时，不打水位线
      */
     private int watermark;
     /**
@@ -90,6 +85,12 @@ public class HttpHandler implements HttpListener, Serializable {
      */
     private static HttpHandler httpHandler;
 
+    /**
+     * 构造方法
+     *
+     * @param port      端口
+     * @param watermark 水位线间隔时长，为0时，不打水位线
+     */
     private HttpHandler(int port, int watermark) {
         this.port = port;
         this.watermark = watermark;
@@ -151,13 +152,6 @@ public class HttpHandler implements HttpListener, Serializable {
         if (ctx != null) {
             //向后传递body中的信息
             ctx.collectWithTimestamp(createData(request, connectId), timestamp);
-        }
-        if (queue != null) {
-            try {
-                queue.put(createData(request, connectId));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
         //发送完数据后，发送水位线
         emitWatermark(timestamp);
