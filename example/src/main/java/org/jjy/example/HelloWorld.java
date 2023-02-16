@@ -18,6 +18,7 @@ package org.jjy.example;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.jjy.netty.dto.HttpDto;
+import org.jjy.netty.function.HttpSink;
 import org.jjy.netty.function.HttpSource;
 
 /**
@@ -31,7 +32,7 @@ public class HelloWorld {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         DataStream<HttpDto<String>> source = env.addSource(new HttpSource(8080));
         source.print("hello");
+        source.addSink(new HttpSink());
         env.execute("HelloWorld");
-
     }
 }
