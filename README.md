@@ -39,6 +39,7 @@
 创建一个类包含如下代码，代码实现了一个监听8080端口的web服务
 
 ```java
+~~~
 public static void main(String[] args) throws Exception {
     //创建运行环境
     final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
@@ -47,6 +48,7 @@ public static void main(String[] args) throws Exception {
     source.addSink(new HttpSink());
     env.execute("HelloWorld");
 }
+~~~
 ```
 
 好了，现在让我们使用postman来测试一下我们的代码吧！
@@ -56,3 +58,24 @@ public static void main(String[] args) throws Exception {
 ### 基于WebSocket调用
 
 环境依赖可以参考<a href="#基于http调用">基于http调用</a>
+
+创建一个类包含如下代码，代码实现了一个监听8080端口的web服务，并且支持webSocket
+
+```java
+~~~
+public static void main(String[] args) throws Exception {
+    //创建运行环境
+    final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+    DataStream<HttpDto<String>> source = env.addSource(new HttpSource(8080));
+    source.print("hello");
+    source.addSink(new WebSocketSink());
+    env.execute("HelloWorld");
+}
+~~~
+```
+
+现在，我们可以使用postman来测试我们的webSocket了
+
+**webSocket需要使用登录过的postman**
+
+![webSocket测试](./img/webSocket测试.png)
