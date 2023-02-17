@@ -5,7 +5,9 @@
 * http 暂时只支持post方法，json方式传参
 
 ## 使用入门
-由于框架暂未发布到maven，需要使用者把源码下载下来后自行打包并发布到本地的maven仓库中。发布好后可以通过以下依赖引入到项目中。
+**由于框架暂未发布到maven，需要使用者把源码下载下来后自行打包并发布到本地的maven仓库中。发布好后可以通过以下依赖引入到项目中。**
+
+### <a name="基于http调用">基于http调用</a>
 
 ```xml
 ~~~
@@ -50,3 +52,7 @@ public static void main(String[] args) throws Exception {
 好了，现在让我们使用postman来测试一下我们的代码吧！
 
 ![helloWord测试](./img/helloWord测试.png)
+
+### 基于WebSocket调用
+
+环境依赖可以参考<a href="#基于http调用">基于http调用</a>
