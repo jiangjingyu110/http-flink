@@ -69,12 +69,13 @@ public static void main(String[] args) throws Exception {
     DataStream<HttpDto<String>> source = env.addSource(new HttpSource(8080));
     source.print("hello");
     source.addSink(new WebSocketSink());
+    source.addSink(new HttpSink());
     env.execute("HelloWorld");
 }
 ~~~
 ```
 
-现在，我们可以使用postman来测试我们的webSocket了
+现在，我们可以使用postman来测试我们的webSocket了。如果现在需要发普通的http请求当然也是支持的。
 
 **webSocket需要使用登录过的postman**
 

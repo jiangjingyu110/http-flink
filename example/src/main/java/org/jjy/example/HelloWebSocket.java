@@ -18,6 +18,7 @@ package org.jjy.example;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.jjy.netty.dto.HttpDto;
+import org.jjy.netty.function.HttpSink;
 import org.jjy.netty.function.HttpSource;
 import org.jjy.netty.function.WebSocketSink;
 
@@ -33,6 +34,7 @@ public class HelloWebSocket {
         DataStream<HttpDto<String>> source = env.addSource(new HttpSource(8080));
         source.print("hello");
         source.addSink(new WebSocketSink());
+        source.addSink(new HttpSink());
         env.execute("HelloWorld");
     }
 }
